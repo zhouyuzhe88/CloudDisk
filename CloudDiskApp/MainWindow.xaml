@@ -1,0 +1,15 @@
+﻿<Window x:Class="CloudDiskApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CloudDiskApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000" MinHeight="190" MinWidth="220">
+    <Grid Name="MainGird">
+        <Grid Name="FolderPickerContainer" Margin="0,40,0,0" HorizontalAlignment="Left" Width="120"/>
+        <Grid Name="ToolBarContainer" Margin="0,0,0,0" Height="40" VerticalAlignment="Top"/>
+        <Grid Name="NavigationContainer" Margin="120,40,0,0" Height="20" VerticalAlignment="Top"/>
+        <Grid Name="FileContainer" Margin="120,60,0,0"/>
+    </Grid>
+</Window>

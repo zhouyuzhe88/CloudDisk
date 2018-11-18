@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleClient", "Samp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{249E2CC4-AC64-46EB-96C0-084296484B9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudDiskApp", "CloudDiskApp\CloudDiskApp.csproj", "{5464E0DC-A27A-4EE7-B338-F966FF79C348}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{249E2CC4-AC64-46EB-96C0-084296484B9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{249E2CC4-AC64-46EB-96C0-084296484B9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{249E2CC4-AC64-46EB-96C0-084296484B9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5464E0DC-A27A-4EE7-B338-F966FF79C348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5464E0DC-A27A-4EE7-B338-F966FF79C348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5464E0DC-A27A-4EE7-B338-F966FF79C348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5464E0DC-A27A-4EE7-B338-F966FF79C348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
