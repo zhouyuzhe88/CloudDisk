@@ -4,9 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CloudDiskApp"
+             xmlns:FileRow="clr-namespace:CloudDiskApp"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="BurlyWood">
-            
+
+    <Grid>
+        <ListView Name="MainList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <local:FileRow CloudFileInfo="{Binding Path=.}" Height="30"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
     </Grid>
 </UserControl>

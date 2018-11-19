@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Protocol;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

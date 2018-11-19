@@ -20,13 +20,44 @@ namespace CloudDiskApp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private FolderPickerView FolderPickerView { get; set; }
+        private FileView FileView { get; set; }
+        private NavigationView NavigationView { get; set; }
+        private ToolBarView ToolBarView { get; set; }
+
+        private App App
+        {
+            get
+            {
+                return (App)Application.Current;
+            }
+        }
+        
         public MainWindow()
         {
             InitializeComponent();
-            FolderPickerContainer.Children.Add(new FolderPickerView());
-            FileContainer.Children.Add(new FileView());
-            NavigationContainer.Children.Add(new NavigationView());
-            ToolBarContainer.Children.Add(new ToolBarView());
+            FolderPickerContainer.Children.Add(FolderPickerView = new FolderPickerView());
+            FileContainer.Children.Add(FileView = new FileView());
+            NavigationContainer.Children.Add(NavigationView = new NavigationView());
+            ToolBarContainer.Children.Add(ToolBarView = new ToolBarView());
+        }
+
+        void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            App.SignIn((signInSuccess) =>
+            {
+                if (signInSuccess)
+                {
+                    App.ListFiles("\\", (files, listSuccess) =>
+                    {
+                        if (files != null && listSuccess)
+                        {
+                            FileView.SetFiles(files);
+                        }
+                    });
+                }
+            });
         }
     }
 }

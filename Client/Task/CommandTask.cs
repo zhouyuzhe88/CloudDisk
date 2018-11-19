@@ -1,5 +1,6 @@
 ﻿using Common.Protocol;
 using Common.Util;
+using System;
 using System.Net.Sockets;
 using System.Threading;
 
@@ -33,8 +34,10 @@ namespace Client.Task
                     {
                         TrySendCommand();
                     }
-                    catch
+                    catch (Exception e)
                     {
+                        Console.WriteLine(e.Message);
+                        Console.WriteLine(e.StackTrace);
                         TaskCompletedCallback.Invoke(null, false);
                     }
 

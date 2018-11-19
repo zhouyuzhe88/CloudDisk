@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CloudDiskApp"
         mc:Ignorable="d"
+        Loaded="OnLoaded"
         Title="MainWindow" Height="600" Width="1000" MinHeight="190" MinWidth="220">
     <Grid Name="MainGird">
         <Grid Name="FolderPickerContainer" Margin="0,40,0,0" HorizontalAlignment="Left" Width="120"/>
