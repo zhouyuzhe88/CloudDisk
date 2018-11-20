@@ -8,12 +8,13 @@
              Name="FileRowControl"
              d:DesignHeight="30" d:DesignWidth="500">
     <Grid Background="AliceBlue">
+        <Image Name="FileIconImage" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Width="30"/>
         <TextBlock x:Name="FilePathTextBlock"
                    Text="{Binding ElementName=FileRowControl, Path=CloudFileInfo.FilePath}"
-                   Margin="0,0,0,0"
+                   Margin="30,0,0,0"
                    HorizontalAlignment="Left" Width="200"/>
-        <TextBlock x:Name="DirTextBlock"
-                   Margin="300,0,0,0"
+        <TextBlock x:Name="FileLengthTextBlock"
+                   Margin="230,0,0,0"
                    HorizontalAlignment="Left" Width="200"/>
     </Grid>
 </UserControl>

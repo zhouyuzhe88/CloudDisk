@@ -90,7 +90,7 @@ namespace Etier.IconHelper
 		public static System.Drawing.Icon GetFolderIcon( IconSize size, FolderType folderType )
 		{
 			// Need to add size check, although errors generated at present!
-			uint flags = Shell32.SHGFI_ICON | Shell32.SHGFI_USEFILEATTRIBUTES;
+			uint flags = Shell32.SHGFI_ICON;
 
 			if (FolderType.Open == folderType)
 			{

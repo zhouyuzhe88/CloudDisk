@@ -1,7 +1,11 @@
 ﻿using Common.Protocol;
+using Etier.IconHelper;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,6 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -51,9 +56,22 @@ namespace CloudDiskApp
                 return;
             }
 
-            DirTextBlock.Text = Convert.ToString(cloudFileInfo.IsDirectory);
+            Icon icon = null;
+            if (cloudFileInfo.IsDirectory)
+            {
+                icon = IconReader.GetFolderIcon(IconReader.IconSize.Large, IconReader.FolderType.Closed);
+
+            }
+            else
+            {
+                icon = IconReader.GetFileIcon(cloudFileInfo.FilePath, IconReader.IconSize.Large, false);
+                FileLengthTextBlock.Text = Convert.ToString(cloudFileInfo.FileLength);
+            }
+            FileIconImage.Source = Imaging.CreateBitmapSourceFromHIcon(
+                    icon.Handle,
+                    Int32Rect.Empty,
+                    BitmapSizeOptions.FromEmptyOptions());
         }
-
-
+        
     }
 }
