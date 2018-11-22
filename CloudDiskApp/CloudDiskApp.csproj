@@ -59,6 +59,9 @@
     <Compile Include="FileRow.xaml.cs">
       <DependentUpon>FileRow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Manager\ClientWrapper.cs" />
+    <Compile Include="Manager\Context.cs" />
+    <Compile Include="Manager\UIController.cs" />
     <Compile Include="NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
     </Compile>

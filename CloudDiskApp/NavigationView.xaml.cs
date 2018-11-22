@@ -24,5 +24,10 @@ namespace CloudDiskApp
         {
             InitializeComponent();
         }
+
+        public void SetPath(string path)
+        {
+            URLTextBlock.Text = path;
+        }
     }
 }

@@ -12,7 +12,7 @@
         <ListView Name="MainList">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:FileRow CloudFileInfo="{Binding Path=.}" Height="30"/>
+                    <local:FileRow FileRowData="{Binding Path=.}" Height="30"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.ItemContainerStyle>

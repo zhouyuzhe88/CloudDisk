@@ -22,32 +22,18 @@ namespace CloudDiskApp
     /// </summary>
     public partial class FileView : UserControl
     {
-        private List<CloudFileInfo> Files { get; set; }
-
-        private List<string> FileNames {
-            get
-            {
-
-                if (Files != null)
-                {
-                    return Files.Select(x => { return x.FilePath; }).ToList();
-                }
-                List<string> ret = new List<string>();
-                return null;
-            }
-        }
+        private List<CloudFileInfo> FileList { get; set; }
 
         public FileView()
         {
             InitializeComponent();
-            MainList.ItemsSource = Files;
         }
 
-        public void SetFiles(List<CloudFileInfo> files)
+        public void SetFiles(List<CloudFileInfo> fileList)
         {
-            Files = files;
+            FileList = fileList;
             MainList.Dispatcher.Invoke(() => {
-                MainList.ItemsSource = Files;
+                MainList.ItemsSource = fileList;
             });
         }
     }

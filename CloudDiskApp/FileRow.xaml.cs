@@ -21,21 +21,29 @@ using System.Windows.Shapes;
 
 namespace CloudDiskApp
 {
+    interface IFileRowManager
+    {
+        void OnFileRowSelect(CloudFileInfo cloudFileInfo);
+    }
+
     /// <summary>
     /// FileRow.xaml 的交互逻辑
     /// </summary>
     public partial class FileRow : UserControl
     {
+        private IFileRowManager Manager { get; set; }
+
         public FileRow()
         {
+            Manager = UIController.Instance;
             InitializeComponent();
             DataContextChanged += OnDataContextChanged;
         }
 
         public static DependencyProperty MessageProperty = DependencyProperty.Register(
-            "CloudFileInfo", typeof(CloudFileInfo), typeof(FileRow));
+            "FileRowData", typeof(CloudFileInfo), typeof(FileRow));
 
-        public CloudFileInfo CloudFileInfo
+        public CloudFileInfo FileRowData
         {
             get
             {
@@ -72,6 +80,10 @@ namespace CloudDiskApp
                     Int32Rect.Empty,
                     BitmapSizeOptions.FromEmptyOptions());
         }
-        
+
+        private void FileRowControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Manager.OnFileRowSelect(FileRowData);
+        }
     }
 }

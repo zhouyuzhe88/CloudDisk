@@ -6,15 +6,17 @@
              xmlns:local="clr-namespace:CloudDiskApp"
              mc:Ignorable="d" 
              Name="FileRowControl"
-             d:DesignHeight="30" d:DesignWidth="500">
+             d:DesignHeight="30" d:DesignWidth="500"
+             MouseDoubleClick="FileRowControl_MouseDoubleClick">
     <Grid Background="AliceBlue">
-        <Image Name="FileIconImage" Margin="0, 0, 0, 0" HorizontalAlignment="Left" Width="30"/>
+        <Image Name="FileIconImage" Margin="5, 5, 5, 5" HorizontalAlignment="Left" Width="20"/>
         <TextBlock x:Name="FilePathTextBlock"
-                   Text="{Binding ElementName=FileRowControl, Path=CloudFileInfo.FilePath}"
-                   Margin="30,0,0,0"
-                   HorizontalAlignment="Left" Width="200"/>
+                   VerticalAlignment="Center"
+                   Text="{Binding ElementName=FileRowControl, Path=FileRowData.FilePath}"
+                   Margin="30,0,100,0"/>
         <TextBlock x:Name="FileLengthTextBlock"
+                   VerticalAlignment="Center"
                    Margin="230,0,0,0"
-                   HorizontalAlignment="Left" Width="200"/>
+                   HorizontalAlignment="Right" Width="50"/>
     </Grid>
 </UserControl>

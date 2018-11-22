@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Protocol;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,27 +16,26 @@ using System.Windows.Shapes;
 
 namespace CloudDiskApp
 {
+    interface IMainWindowManager
+    {
+        void OnMainWindowLoaded();
+    }
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IMainWindowManager Manager { get; set; }
 
         private FolderPickerView FolderPickerView { get; set; }
         private FileView FileView { get; set; }
         private NavigationView NavigationView { get; set; }
         private ToolBarView ToolBarView { get; set; }
-
-        private App App
-        {
-            get
-            {
-                return (App)Application.Current;
-            }
-        }
         
         public MainWindow()
         {
+            Manager = UIController.Instance;
             InitializeComponent();
             FolderPickerContainer.Children.Add(FolderPickerView = new FolderPickerView());
             FileContainer.Children.Add(FileView = new FileView());
@@ -45,19 +45,17 @@ namespace CloudDiskApp
 
         void OnLoaded(object sender, RoutedEventArgs e)
         {
-            App.SignIn((signInSuccess) =>
-            {
-                if (signInSuccess)
-                {
-                    App.ListFiles("\\", (files, listSuccess) =>
-                    {
-                        if (files != null && listSuccess)
-                        {
-                            FileView.SetFiles(files);
-                        }
-                    });
-                }
-            });
+            Manager.OnMainWindowLoaded();
+        }
+
+        public void SetFiles(List<CloudFileInfo> fileList)
+        {
+            FileView.SetFiles(fileList);
+        }
+
+        public void SetPath(string path)
+        {
+            NavigationView.SetPath(path);
         }
     }
 }
