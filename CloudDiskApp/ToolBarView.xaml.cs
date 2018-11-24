@@ -15,14 +15,27 @@ using System.Windows.Shapes;
 
 namespace CloudDiskApp
 {
+    interface IToolBarViewManager
+    {
+        void OnUpButtonClick();
+    }
+
     /// <summary>
     /// ToolBarView.xaml 的交互逻辑
     /// </summary>
     public partial class ToolBarView : UserControl
     {
+        IToolBarViewManager Manager { get; set; }
+
         public ToolBarView()
         {
+            Manager = UIController.Instance;
             InitializeComponent();
+        }
+
+        private void UpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.OnUpButtonClick();
         }
     }
 }

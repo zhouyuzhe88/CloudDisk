@@ -1,11 +1,12 @@
 ﻿using Common.Protocol;
+using System.Linq;
 using System;
-using System.Collections.Generic;
 using System.Windows;
+using Common.Util;
 
 namespace CloudDiskApp
 {
-    class UIController: IMainWindowManager, IFileRowManager
+    class UIController: IMainWindowManager, IFileRowManager, IToolBarViewManager
     {
         private UIController() { }
 
@@ -64,7 +65,7 @@ namespace CloudDiskApp
             {
                 if (signInSuccess)
                 {
-                    ListFiles("\\");
+                    ListFiles(FileHelper.FileRoot);
                 }
             });
         }
@@ -76,7 +77,18 @@ namespace CloudDiskApp
         {
             if (cloudFileInfo.IsDirectory)
             {
-                ListFiles(Context.Instance.CurrentPath + "\\" + cloudFileInfo.FilePath);
+                ListFiles(Context.Instance.CurrentPath.AppendPath(cloudFileInfo.FilePath));
+            }
+        }
+        #endregion
+
+        #region ToolBarView
+        public void OnUpButtonClick()
+        {
+            var components = Context.Instance.CurrentPathComponent;
+            if (components.Count > 0) {
+                components.Remove(components.Last());
+                ListFiles(components.GetPath());
             }
         }
         #endregion

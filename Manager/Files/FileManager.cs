@@ -85,23 +85,20 @@ namespace Manager.Files
 
         private string BuildFilePath(string userName, string setName, string filePath, string fileName)
         {
-            string root = Settings.GetStringValue("RootPath");
-            string unclassifiedPath = Settings.GetStringValue("UnclassifiedPath");
-            string classifiedPath = Settings.GetStringValue("ClassifiedPath");
-            string midPath;
+            List<string> pathComponents = new List<string>();
+            pathComponents.Add(userName);
             if (string.IsNullOrWhiteSpace(setName))
             {
-                midPath = unclassifiedPath;
+                pathComponents.AddRange(Settings.GetStringValue("UnclassifiedPath").GetPathComponents());
             }
             else
             {
-                midPath = string.Format(@"{0}\{1}", classifiedPath, setName);
+                pathComponents.AddRange(Settings.GetStringValue("ClassifiedPath").GetPathComponents());
+                pathComponents.AddRange(setName.GetPathComponents());
             }
-            if(filePath == null || filePath == "\\")
-            {
-                filePath = "";
-            }
-            return string.Format(@"{0}\{1}\{2}\{3}\{4}", root, userName, midPath, filePath, fileName).Replace(@"\\", @"\");
+            pathComponents.AddRange(filePath.GetPathComponents());
+            pathComponents.AddRange(fileName.GetPathComponents());
+            return Settings.GetStringValue("RootPath") + pathComponents.GetPath();
         }
     }
 }

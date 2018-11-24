@@ -1,4 +1,5 @@
 ﻿using Common.Protocol;
+using Common.Util;
 using Etier.IconHelper;
 using System;
 using System.Collections.Generic;
@@ -63,22 +64,16 @@ namespace CloudDiskApp
             {
                 return;
             }
-
-            Icon icon = null;
+            
             if (cloudFileInfo.IsDirectory)
             {
-                icon = IconReader.GetFolderIcon(IconReader.IconSize.Large, IconReader.FolderType.Closed);
-
+                FileIconImage.Source = FileHelper.GetFolderIcon().GetImageSource();
             }
             else
             {
-                icon = IconReader.GetFileIcon(cloudFileInfo.FilePath, IconReader.IconSize.Large, false);
-                FileLengthTextBlock.Text = Convert.ToString(cloudFileInfo.FileLength);
+                FileIconImage.Source = FileHelper.GetFileIcon(cloudFileInfo.FilePath).GetImageSource();
+                FileLengthTextBlock.Text = cloudFileInfo.FileLength.GetFileSize();
             }
-            FileIconImage.Source = Imaging.CreateBitmapSourceFromHIcon(
-                    icon.Handle,
-                    Int32Rect.Empty,
-                    BitmapSizeOptions.FromEmptyOptions());
         }
 
         private void FileRowControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)

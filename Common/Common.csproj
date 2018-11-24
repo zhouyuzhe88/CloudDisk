@@ -30,15 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,11 +61,13 @@
     <Compile Include="Protocol\SigninRequest.cs" />
     <Compile Include="Protocol\UploadRequest.cs" />
     <Compile Include="Protocol\UploadResponse.cs" />
+    <Compile Include="Util\FileHelper.cs" />
     <Compile Include="Util\HashHelper.cs" />
     <Compile Include="Util\JsonHelper.cs" />
     <Compile Include="Util\Coder.cs" />
     <Compile Include="Util\Settings.cs" />
     <Compile Include="Util\StreamHelper.cs" />
+    <Compile Include="Vendor\IconHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

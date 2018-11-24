@@ -16,7 +16,8 @@
                    Margin="30,0,100,0"/>
         <TextBlock x:Name="FileLengthTextBlock"
                    VerticalAlignment="Center"
-                   Margin="230,0,0,0"
-                   HorizontalAlignment="Right" Width="50"/>
+                   
+                   Margin="0,0,20,0"
+                   HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

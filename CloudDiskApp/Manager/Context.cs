@@ -1,4 +1,8 @@
-﻿namespace CloudDiskApp
+﻿using Common.Util;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace CloudDiskApp
 {
     class Context
     {
@@ -18,6 +22,14 @@
         }
 
         internal string CurrentFileSet { get; set; }
+
+        internal List<string> CurrentPathComponent
+        {
+            get
+            {
+                return CurrentPath.GetPathComponents();
+            }
+        }
 
         internal string CurrentPath { get; set; }
     }
