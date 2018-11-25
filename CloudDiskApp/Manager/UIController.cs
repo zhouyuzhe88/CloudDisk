@@ -3,6 +3,8 @@ using System.Linq;
 using System;
 using System.Windows;
 using Common.Util;
+using System.Collections.Generic;
+using Microsoft.Win32;
 
 namespace CloudDiskApp
 {
@@ -79,6 +81,21 @@ namespace CloudDiskApp
             {
                 ListFiles(Context.Instance.CurrentPath.AppendPath(cloudFileInfo.FilePath));
             }
+            else
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = FileHelper.SystemDownloadPath;
+                saveFileDialog.FileName = cloudFileInfo.FilePath;
+
+                if (saveFileDialog.ShowDialog() == true && !string.IsNullOrWhiteSpace(saveFileDialog.FileName))
+                {
+                    DownloadTask task = new DownloadTask();
+                    task.LocalPath = saveFileDialog.FileName;
+                    task.FileName = saveFileDialog.FileName.GetPathComponents().Last();
+                    task.RemotePath = Context.Instance.CurrentPath.AppendPath(cloudFileInfo.FilePath);
+                    TransferManager.Instance.AddTask(task);
+                }
+            }
         }
         #endregion
 
@@ -90,6 +107,13 @@ namespace CloudDiskApp
                 components.Remove(components.Last());
                 ListFiles(components.GetPath());
             }
+        }
+        #endregion
+
+        #region FileTransfer
+        public void UpdateTransferList(List<TransferTask> list)
+        {
+            MainWindow.UpdateTransferList(list);
         }
         #endregion
     }

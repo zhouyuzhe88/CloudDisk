@@ -1,22 +1,23 @@
-﻿<UserControl x:Class="CloudDiskApp.FileRow"
+﻿<UserControl x:Class="CloudDiskApp.TransferFileRow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CloudDiskApp"
              mc:Ignorable="d" 
-             Name="FileRowControl"
-             d:DesignHeight="30" d:DesignWidth="500"
-             MouseDoubleClick="FileRowControl_MouseDoubleClick">
-    <Grid Background="AliceBlue">
-        <Image Name="FileIconImage" Margin="5, 5, 5, 5" HorizontalAlignment="Left" Width="20"/>
-        <TextBlock x:Name="FilePathTextBlock"
+             Name="TransferFileRowControl"
+             d:DesignHeight="30" d:DesignWidth="300">
+    <Grid>
+        <Grid Background="AliceBlue">
+            <Image Name="FileIconImage" Margin="5, 5, 5, 5" HorizontalAlignment="Left" Width="20"/>
+            <TextBlock x:Name="FilePathTextBlock"
                    VerticalAlignment="Center"
-                   Text="{Binding ElementName=FileRowControl, Path=FileRowData.FilePath}"
+                   Text="{Binding ElementName=TransferFileRowControl, Path=TransferFileRowData.FileName}"
                    Margin="30,0,100,0"/>
-        <TextBlock x:Name="FileLengthTextBlock"
+            <TextBlock x:Name="FileLengthTextBlock"
                    VerticalAlignment="Center"
                    Margin="0,0,20,0"
                    HorizontalAlignment="Right"/>
+        </Grid>
     </Grid>
 </UserControl>

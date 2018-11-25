@@ -32,7 +32,10 @@ namespace CloudDiskApp
         private FileView FileView { get; set; }
         private NavigationView NavigationView { get; set; }
         private ToolBarView ToolBarView { get; set; }
-        
+
+        private TransferFileWindow TransferFileWindow { get; set; }
+
+
         public MainWindow()
         {
             Manager = UIController.Instance;
@@ -41,6 +44,7 @@ namespace CloudDiskApp
             FileContainer.Children.Add(FileView = new FileView());
             NavigationContainer.Children.Add(NavigationView = new NavigationView());
             ToolBarContainer.Children.Add(ToolBarView = new ToolBarView());
+            TransferFileWindow = new TransferFileWindow();
         }
 
         void OnLoaded(object sender, RoutedEventArgs e)
@@ -56,6 +60,12 @@ namespace CloudDiskApp
         public void SetPath(string path)
         {
             NavigationView.SetPath(path);
+        }
+
+        public void UpdateTransferList(List<TransferTask> list)
+        {
+            TransferFileWindow.SetTaskList(list);
+            TransferFileWindow.Show();
         }
     }
 }

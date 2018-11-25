@@ -61,12 +61,21 @@
     </Compile>
     <Compile Include="Manager\ClientWrapper.cs" />
     <Compile Include="Manager\Context.cs" />
+    <Compile Include="Manager\Tranfer\DownloadTask.cs" />
+    <Compile Include="Manager\Tranfer\TransferManager.cs" />
     <Compile Include="Manager\UIController.cs" />
     <Compile Include="NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToolBarView.xaml.cs">
       <DependentUpon>ToolBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Tranfer\TransferTask.cs" />
+    <Compile Include="TransferFileRow.xaml.cs">
+      <DependentUpon>TransferFileRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransferFileWindow.xaml.cs">
+      <DependentUpon>TransferFileWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="FileRow.xaml">
       <SubType>Designer</SubType>
@@ -103,6 +112,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ToolBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransferFileRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransferFileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +164,7 @@
   <ItemGroup>
     <Resource Include="resource\UpFolder.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
