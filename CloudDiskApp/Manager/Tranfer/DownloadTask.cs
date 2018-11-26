@@ -8,5 +8,9 @@ namespace CloudDiskApp
 {
     class DownloadTask: TransferTask
     {
+        public override void Start()
+        {
+            ClientWrapper.Instance.DownloadFile(FileName, RemotePath, LocalPath, OnStart, OnCompleted, OnDataTransfferd);
+        }
     }
 }

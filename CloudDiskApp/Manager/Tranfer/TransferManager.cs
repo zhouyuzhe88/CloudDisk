@@ -30,5 +30,10 @@ namespace CloudDiskApp
             TaskList.Add(task);
             UIController.Instance.UpdateTransferList(TaskList);
         }
+
+        public void StartTask(TransferTask task)
+        {
+            
+        }
     }
 }

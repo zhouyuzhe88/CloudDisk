@@ -15,6 +15,11 @@ using System.Windows.Shapes;
 
 namespace CloudDiskApp
 {
+    interface ITransferFileRowManager
+    {
+        void RefreshTransferList();
+    }
+
     /// <summary>
     /// TransferFileRow.xaml 的交互逻辑
     /// </summary>
@@ -38,6 +43,11 @@ namespace CloudDiskApp
             {
                 SetValue(MessageProperty, value);
             }
+        }
+
+        private void TransferFileRowControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TransferFileRowData.Start();
         }
     }
 }

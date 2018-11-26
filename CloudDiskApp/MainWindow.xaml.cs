@@ -67,5 +67,10 @@ namespace CloudDiskApp
             TransferFileWindow.SetTaskList(list);
             TransferFileWindow.Show();
         }
+
+        public void RefreshTransferList()
+        {
+            TransferFileWindow.Refresh();
+        }
     }
 }

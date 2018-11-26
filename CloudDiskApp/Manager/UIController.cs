@@ -5,10 +5,11 @@ using System.Windows;
 using Common.Util;
 using System.Collections.Generic;
 using Microsoft.Win32;
+using System.Threading;
 
 namespace CloudDiskApp
 {
-    class UIController: IMainWindowManager, IFileRowManager, IToolBarViewManager
+    class UIController: IMainWindowManager, IFileRowManager, IToolBarViewManager, ITransferFileRowManager
     {
         private UIController() { }
 
@@ -92,7 +93,7 @@ namespace CloudDiskApp
                     DownloadTask task = new DownloadTask();
                     task.LocalPath = saveFileDialog.FileName;
                     task.FileName = saveFileDialog.FileName.GetPathComponents().Last();
-                    task.RemotePath = Context.Instance.CurrentPath.AppendPath(cloudFileInfo.FilePath);
+                    task.RemotePath = Context.Instance.CurrentPath;
                     TransferManager.Instance.AddTask(task);
                 }
             }
@@ -114,6 +115,17 @@ namespace CloudDiskApp
         public void UpdateTransferList(List<TransferTask> list)
         {
             MainWindow.UpdateTransferList(list);
+            MainWindow.RefreshTransferList();
+        }
+        #endregion
+
+        #region TransferFileRow
+        public void RefreshTransferList()
+        {
+            DiapatchMain(() =>
+            {
+                MainWindow.RefreshTransferList();
+            });
         }
         #endregion
     }

@@ -6,9 +6,10 @@
         xmlns:local="clr-namespace:CloudDiskApp"
         xmlns:FileRow="clr-namespace:CloudDiskApp"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="TransferFileWindow" Height="300" Width="300">
     <Grid>
-        <ListView Name="MainList">
+        <ListView Name="MainList" Background="AntiqueWhite">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <local:TransferFileRow TransferFileRowData="{Binding Path=.}" Height="30"/>

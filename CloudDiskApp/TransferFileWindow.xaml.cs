@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +32,19 @@ namespace CloudDiskApp
         {
             TaskList = taskList;
             MainList.Dispatcher.Invoke(() => {
-                MainList.ItemsSource = taskList;
+                MainList.ItemsSource = TaskList;
             });
+        }
+
+        public void Refresh()
+        {
+            CollectionViewSource.GetDefaultView(TaskList).Refresh();
+        }
+        
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
         }
     }
 }

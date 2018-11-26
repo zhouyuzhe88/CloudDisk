@@ -9,7 +9,7 @@ namespace CloudDiskApp
         {
             Pending,
             Running,
-            Finished
+            Completed
         }
 
         public string FileName { get; set; }
@@ -32,7 +32,7 @@ namespace CloudDiskApp
 
         protected long LastSyncedSize { get; set; }
 
-        public void Start()
+        public virtual void Start()
         {
             StartTime = DateTime.Now;
             LastSyncedTime = DateTime.Now;
@@ -49,7 +49,20 @@ namespace CloudDiskApp
                 LastSyncedSize = TranffedSize;
                 LastSyncedTime = now;
             }
+            Console.WriteLine(Speed);
+            UIController.Instance.RefreshTransferList();
         }
 
+        protected void OnStart()
+        {
+            Console.WriteLine("running");
+            Status = TaskStatus.Running;
+        }
+
+        protected void OnCompleted(bool success)
+        {
+            Console.WriteLine("Completed");
+            Status = TaskStatus.Completed;
+        }
     }
 }

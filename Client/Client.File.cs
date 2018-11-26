@@ -31,6 +31,7 @@ namespace Client
                     taskCompletedCallback(null, false);
                 }
                 DownloadResponse dResponse = response as DownloadResponse;
+                // TODO: handle fail
 
                 DownloadFileTask downloadFileTask = new DownloadFileTask(this, dResponse.DownloadToken, new FileInfo(localName), dResponse.FileLength);
                 downloadFileTask.TaskCompletedCallback = taskCompletedCallback;

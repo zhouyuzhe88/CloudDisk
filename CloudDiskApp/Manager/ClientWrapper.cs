@@ -46,5 +46,22 @@ namespace CloudDiskApp
                 completedCallback?.Invoke((response as ListResponse)?.Files, success);
             }, fileSet);
         }
+
+        internal void DownloadFile(
+            string fileName,
+            string remotePath,
+            string localName,
+            Action taskStartedCallback,
+            Action<bool> taskCompletedCallback,
+            Action<int> dataTransferredCallback,
+            string fileSet = "")
+        {
+            Client.DownloadFile(fileName, remotePath, localName, taskStartedCallback,
+                (response, success) =>
+                {
+                    taskCompletedCallback(success);
+                },
+                dataTransferredCallback, fileSet);
+        }
     }
 }

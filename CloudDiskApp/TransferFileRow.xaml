@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CloudDiskApp"
              mc:Ignorable="d" 
              Name="TransferFileRowControl"
+             MouseDoubleClick="TransferFileRowControl_MouseDoubleClick"
              d:DesignHeight="30" d:DesignWidth="300">
     <Grid>
         <Grid Background="AliceBlue">
