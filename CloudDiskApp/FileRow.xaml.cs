@@ -72,7 +72,7 @@ namespace CloudDiskApp
             else
             {
                 FileIconImage.Source = FileHelper.GetFileIcon(cloudFileInfo.FilePath).GetImageSource();
-                FileLengthTextBlock.Text = cloudFileInfo.FileLength.GetFileSize();
+                FileLengthTextBlock.Text = cloudFileInfo.FileLength.GetFileLengthString();
             }
         }
 

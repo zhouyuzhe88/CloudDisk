@@ -91,9 +91,9 @@ namespace CloudDiskApp
                 if (saveFileDialog.ShowDialog() == true && !string.IsNullOrWhiteSpace(saveFileDialog.FileName))
                 {
                     DownloadTask task = new DownloadTask();
-                    task.LocalPath = saveFileDialog.FileName;
-                    task.FileName = saveFileDialog.FileName.GetPathComponents().Last();
-                    task.RemotePath = Context.Instance.CurrentPath;
+                    task.LocalFileFullPath = saveFileDialog.FileName;
+                    task.RemoteFileFullPath = Context.Instance.CurrentPath.AppendPath(task.LocalFileFullPath.GetSimpleName());
+                    task.FileLength = cloudFileInfo.FileLength;
                     TransferManager.Instance.AddTask(task);
                 }
             }

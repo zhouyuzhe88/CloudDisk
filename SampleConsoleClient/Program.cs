@@ -46,24 +46,25 @@ namespace SampleConsoleClient
             });
         }
 
-        private static void DownloadFile(string fileName, string remotePath, string localName)
+        private static void DownloadFile(string remoteFileFullPath, string localFileFullPath)
         {
             DateTime startTime = DateTime.Now, lastTime = DateTime.Now;
             int byteCnt = 0;
             long fileLength = 0;
             double timeCnt = 0;
-            client.DownloadFile(fileName, remotePath, localName, () =>
-            {
-                Console.WriteLine("start download {0}", localName);
-            },
-            (r, s) =>
-            {
-                OnDataTransCompleted(startTime, fileLength);
-            },
-            (length) =>
-            {
-                OnDataTrans(length, ref lastTime, ref byteCnt, ref fileLength, ref timeCnt);
-            });
+            client.DownloadFile(remoteFileFullPath, localFileFullPath, "",
+                taskStartedCallback: () =>
+             {
+                 Console.WriteLine("start download {0}", localFileFullPath);
+             },
+                taskCompletedCallback: (r, s) =>
+                 {
+                     OnDataTransCompleted(startTime, fileLength);
+                 },
+                dataTransferredCallback: (length) =>
+                 {
+                     OnDataTrans(length, ref lastTime, ref byteCnt, ref fileLength, ref timeCnt);
+                 });
         }
 
         private static void OnListCompleted(Response response, bool success)

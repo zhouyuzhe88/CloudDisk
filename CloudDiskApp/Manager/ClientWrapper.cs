@@ -48,20 +48,19 @@ namespace CloudDiskApp
         }
 
         internal void DownloadFile(
-            string fileName,
-            string remotePath,
-            string localName,
+            string remoteFileFullPath,
+            string localFileFullPath,
+            string fileSet,
             Action taskStartedCallback,
             Action<bool> taskCompletedCallback,
-            Action<int> dataTransferredCallback,
-            string fileSet = "")
+            Action<int> dataTransferredCallback)
         {
-            Client.DownloadFile(fileName, remotePath, localName, taskStartedCallback,
+            Client.DownloadFile(remoteFileFullPath, localFileFullPath, fileSet,
+                taskStartedCallback,
                 (response, success) =>
                 {
                     taskCompletedCallback(success);
-                },
-                dataTransferredCallback, fileSet);
+                }, dataTransferredCallback);
         }
     }
 }

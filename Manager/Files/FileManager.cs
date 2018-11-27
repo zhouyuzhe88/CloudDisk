@@ -17,7 +17,7 @@ namespace Manager.Files
 
         internal List<CloudFileInfo> ListFiles(string userName, string fileSet, string filePath)
         {
-            string fullPath = BuildFilePath(userName, fileSet, filePath, "");
+            string fullPath = BuildFilePath(userName, fileSet, filePath);
             DirectoryInfo directoryInfo = new DirectoryInfo(fullPath);
             if (!directoryInfo.Exists)
             {
@@ -38,7 +38,7 @@ namespace Manager.Files
 
         internal string AddUploadFile(string userName, string fileSet, string filePath, string fileName, long fileLength)
         {
-            string fullPath = BuildFilePath(userName, fileSet, filePath, fileName);
+            string fullPath = BuildFilePath(userName, fileSet, filePath + "\\" + fileName);
             new FileInfo(fullPath).Directory.Create();
             string fileId = Guid.NewGuid().ToString();
             CloudFileInfo fileInfo = new CloudFileInfo(fullPath, fileLength, false);
@@ -49,9 +49,9 @@ namespace Manager.Files
             return fileId;
         }
 
-        internal string AddDownloadFile(string userName, string fileSet, string filePath, string fileName)
+        internal string AddDownloadFile(string userName, string fileSet, string filePath)
         {
-            string fullPath = BuildFilePath(userName, fileSet, filePath, fileName);
+            string fullPath = BuildFilePath(userName, fileSet, filePath);
             FileInfo fileInfo = new FileInfo(fullPath);
             if(!fileInfo.Exists)
             {
@@ -83,7 +83,7 @@ namespace Manager.Files
             }
         }
 
-        private string BuildFilePath(string userName, string setName, string filePath, string fileName)
+        private string BuildFilePath(string userName, string setName, string filePath)
         {
             List<string> pathComponents = new List<string>();
             pathComponents.Add(userName);
@@ -97,7 +97,6 @@ namespace Manager.Files
                 pathComponents.AddRange(setName.GetPathComponents());
             }
             pathComponents.AddRange(filePath.GetPathComponents());
-            pathComponents.AddRange(fileName.GetPathComponents());
             return Settings.GetStringValue("RootPath") + pathComponents.GetPath();
         }
     }

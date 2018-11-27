@@ -1,5 +1,6 @@
 ﻿using Common.Util;
 using System;
+using System.Linq;
 
 namespace CloudDiskApp
 {
@@ -12,15 +13,23 @@ namespace CloudDiskApp
             Completed
         }
 
-        public string FileName { get; set; }
+        public string FileName
+        {
+            get
+            {
+                return RemoteFileFullPath.GetPathComponents().Last();
+            }
+        }
 
-        public string RemotePath { get; set; }
+        public string RemoteFileFullPath { get; set; }
 
-        public string LocalPath { get; set; }
+        public string LocalFileFullPath { get; set; }
 
-        public long FileSize { get; set; }
+        public string FileSet { get; set; }
 
-        public long TranffedSize { get; set; }
+        public long FileLength { get; set; }
+
+        public long TranffedLength { get; set; }
 
         public TaskStatus Status { get; set; }
 
@@ -30,7 +39,7 @@ namespace CloudDiskApp
 
         protected DateTime LastSyncedTime { get; set; }
 
-        protected long LastSyncedSize { get; set; }
+        protected long LastSyncedLength { get; set; }
 
         public virtual void Start()
         {
@@ -40,16 +49,16 @@ namespace CloudDiskApp
 
         public void OnDataTransfferd(int size)
         {
-            TranffedSize += size;
+            TranffedLength += size;
             DateTime now = DateTime.Now;
             double time = (now - LastSyncedTime).TotalMilliseconds;
             if (time > 1000)
             {
-                Speed = ((long)((TranffedSize - LastSyncedSize) / time * 1000)).GetFileSize() + " / s";
-                LastSyncedSize = TranffedSize;
+                Speed = ((long)((TranffedLength - LastSyncedLength) / time * 1000)).GetFileLengthString() + " / s";
+                LastSyncedLength = TranffedLength;
                 LastSyncedTime = now;
+                Console.WriteLine(Speed);
             }
-            Console.WriteLine(Speed);
             UIController.Instance.RefreshTransferList();
         }
 

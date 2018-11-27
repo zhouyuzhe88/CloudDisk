@@ -42,12 +42,22 @@ namespace Common.Util
             return (path + FileSeparator + subPath).GetCleanPath();
         }
 
+        public static string GetSimpleName(this string fullPath)
+        {
+            List<string> components = fullPath.GetPathComponents();
+            if (components.Count > 0)
+            {
+                return components.Last();
+            }
+            return fullPath;
+        }
+
         public static string GetCleanPath(this string path)
         {
             return path.GetPathComponents().GetPath();
         }
 
-        public static string GetFileSize(this long byteCnt)
+        public static string GetFileLengthString(this long byteCnt)
         {
             if (byteCnt == 0)
             {

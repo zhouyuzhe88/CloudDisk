@@ -12,12 +12,12 @@ namespace Manager.Handler
                 return request.BuildResponse(false);
             }
             DownloadRequest dRequest = request as DownloadRequest;
-            if (string.IsNullOrWhiteSpace(dRequest.FileName))
+            if (string.IsNullOrWhiteSpace(dRequest.RemoteFileFullPath))
             {
                 return request.BuildResponse(false);
             }
             string fileId = ActorGroup.Instance.FileManager.AddDownloadFile(request.UserName,
-                dRequest.FileSet, dRequest.RemotePath, dRequest.FileName);
+                dRequest.FileSet, dRequest.RemoteFileFullPath);
             if (string.IsNullOrWhiteSpace(fileId))
             {
                 return request.BuildResponse(false);

@@ -15,15 +15,14 @@ namespace Client
         }
 
         public void DownloadFile(
-            string fileName,
-            string remotePath,
-            string localName,
+            string remoteFileFullPath,
+            string localFileFullPath,
+            string fileSet,
             Action taskStartedCallback,
             Action<Response, bool> taskCompletedCallback,
-            Action<int> dataTransferredCallback,
-            string fileSet = "")
+            Action<int> dataTransferredCallback)
         {
-            GetDownloadInfoTask getDownloadInfoTask = new GetDownloadInfoTask(this, fileName, remotePath, fileSet);
+            GetDownloadInfoTask getDownloadInfoTask = new GetDownloadInfoTask(this, remoteFileFullPath, fileSet);
             getDownloadInfoTask.TaskCompletedCallback = (response, success) =>
             {
                 if (!response.Success)
@@ -33,7 +32,7 @@ namespace Client
                 DownloadResponse dResponse = response as DownloadResponse;
                 // TODO: handle fail
 
-                DownloadFileTask downloadFileTask = new DownloadFileTask(this, dResponse.DownloadToken, new FileInfo(localName), dResponse.FileLength);
+                DownloadFileTask downloadFileTask = new DownloadFileTask(this, dResponse.DownloadToken, new FileInfo(localFileFullPath), dResponse.FileLength);
                 downloadFileTask.TaskCompletedCallback = taskCompletedCallback;
                 downloadFileTask.TaskStartedCallback = taskStartedCallback;
                 downloadFileTask.DataTransferredCallback = dataTransferredCallback;
