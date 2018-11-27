@@ -13,13 +13,9 @@ namespace CloudDiskApp
             Completed
         }
 
-        public string FileName
-        {
-            get
-            {
-                return RemoteFileFullPath.GetPathComponents().Last();
-            }
-        }
+        public abstract string FileName { get; }
+
+        public abstract string DirectoryPath { get; }
 
         public string RemoteFileFullPath { get; set; }
 
@@ -28,6 +24,8 @@ namespace CloudDiskApp
         public string FileSet { get; set; }
 
         public long FileLength { get; set; }
+
+        public string FileLengthString { get { return FileLength.GetFileLengthString(); } }
 
         public long TranffedLength { get; set; }
 
@@ -58,20 +56,22 @@ namespace CloudDiskApp
                 LastSyncedLength = TranffedLength;
                 LastSyncedTime = now;
                 Console.WriteLine(Speed);
+                UIController.Instance.RefreshTransferList();
             }
-            UIController.Instance.RefreshTransferList();
         }
 
         protected void OnStart()
         {
             Console.WriteLine("running");
             Status = TaskStatus.Running;
+            UIController.Instance.RefreshTransferList();
         }
 
         protected void OnCompleted(bool success)
         {
             Console.WriteLine("Completed");
             Status = TaskStatus.Completed;
+            UIController.Instance.RefreshTransferList();
         }
     }
 }

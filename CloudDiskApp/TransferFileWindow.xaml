@@ -7,7 +7,7 @@
         xmlns:FileRow="clr-namespace:CloudDiskApp"
         mc:Ignorable="d"
         Closing="Window_Closing"
-        Title="TransferFileWindow" Height="300" Width="300">
+        Title="TransferFileWindow" Height="200" Width="600">
     <Grid>
         <ListView Name="MainList" Background="AntiqueWhite">
             <ListView.ItemTemplate>

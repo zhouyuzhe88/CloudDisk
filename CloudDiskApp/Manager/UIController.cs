@@ -92,7 +92,7 @@ namespace CloudDiskApp
                 {
                     DownloadTask task = new DownloadTask();
                     task.LocalFileFullPath = saveFileDialog.FileName;
-                    task.RemoteFileFullPath = Context.Instance.CurrentPath.AppendPath(task.LocalFileFullPath.GetSimpleName());
+                    task.RemoteFileFullPath = Context.Instance.CurrentPath.AppendPath(task.LocalFileFullPath.GetLastComponent());
                     task.FileLength = cloudFileInfo.FileLength;
                     TransferManager.Instance.AddTask(task);
                 }

@@ -42,12 +42,27 @@ namespace Common.Util
             return (path + FileSeparator + subPath).GetCleanPath();
         }
 
-        public static string GetSimpleName(this string fullPath)
+        public static string GetLastComponent(this string fullPath)
         {
             List<string> components = fullPath.GetPathComponents();
             if (components.Count > 0)
             {
                 return components.Last();
+            }
+            return fullPath;
+        }
+
+        public static string GetDirectoryPath(this string fullPath)
+        {
+            List<string> components = fullPath.GetPathComponents();
+            if (components.Count > 1)
+            {
+                components.RemoveAt(components.Count - 1);
+                return components.GetPath();
+            }
+            else if (components.Count == 1)
+            {
+                return FileRoot;
             }
             return fullPath;
         }

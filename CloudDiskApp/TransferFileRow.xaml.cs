@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,7 @@ namespace CloudDiskApp
         public TransferFileRow()
         {
             InitializeComponent();
+            DataContextChanged += OnDataContextChanged;
         }
 
         public static DependencyProperty MessageProperty = DependencyProperty.Register(
@@ -42,6 +44,31 @@ namespace CloudDiskApp
             set
             {
                 SetValue(MessageProperty, value);
+            }
+        }
+
+        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            TransferTask task = (sender as FrameworkElement).DataContext as TransferTask;
+            if (task == null)
+            {
+                return;
+            }
+            FileIconImage.Source = FileHelper.GetFileIcon(task.FileName).GetImageSource();
+
+            switch (task.Status)
+            {
+                case TransferTask.TaskStatus.Pending:
+                    StatusTextBlock.Text = "Pending";
+                    break;
+                case TransferTask.TaskStatus.Running:
+                    double persetage = 1.0 * task.TranffedLength / task.FileLength;
+                    // ColorGrid.Width = FirstGrid.Width * persetage;
+                    StatusTextBlock.Text = string.Format("{0:0.00}% ({1})", 100.0 * persetage, task.Speed) ;
+                    break;
+                case TransferTask.TaskStatus.Completed:
+                    StatusTextBlock.Text = "Completed";
+                    break;
             }
         }
 
