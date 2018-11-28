@@ -9,7 +9,11 @@
     <Grid Background="LightCyan">
         <Button Name="UpButton" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
                         Width="30" ToolTip="Up" Click="UpButton_Click">
-            <Image Source="resource\UpFolder.ico"/>
-        </Button>    
+            <Image Source="resource\UpFolder.png"/>
+        </Button>
+        <Button Name="AddFileButton" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top"
+                        Width="30" ToolTip="AddFile" Click="AddFileButton_Click">
+            <Image Source="resource\AddFile.png"/>
+        </Button>
     </Grid>
 </UserControl>

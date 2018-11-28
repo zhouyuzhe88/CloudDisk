@@ -62,5 +62,21 @@ namespace CloudDiskApp
                     taskCompletedCallback(success);
                 }, dataTransferredCallback);
         }
+
+        internal void UploadFile(
+            string remoteFileFullPath,
+            string localFileFullPath,
+            string fileSet,
+            Action taskStartedCallback,
+            Action<bool> taskCompletedCallback,
+            Action<int> dataTransferredCallback)
+        {
+            Client.UploadFile(remoteFileFullPath, localFileFullPath, fileSet,
+                taskStartedCallback,
+                (response, success) =>
+                {
+                    taskCompletedCallback(success);
+                }, dataTransferredCallback);
+        }
     }
 }

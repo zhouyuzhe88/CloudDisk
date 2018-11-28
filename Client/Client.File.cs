@@ -43,15 +43,15 @@ namespace Client
         }
 
         public void UploadFile(
-            string fileName,
-            string remotePath,
+            string remoteFileFullPath,
+            string localFileFullPath,
+            string fileSet,
             Action taskStartedCallback,
             Action<Response, bool> taskCompletedCallback,
-            Action<int> dataTransferredCallback,
-            string fileSet = "")
+            Action<int> dataTransferredCallback)
         {
-            FileInfo fileInfo = new FileInfo(fileName);
-            GetUploadInfoTask getUploadInfoTask = new GetUploadInfoTask(this, fileInfo.Name, remotePath, fileInfo.Length, fileSet);
+            FileInfo fileInfo = new FileInfo(localFileFullPath);
+            GetUploadInfoTask getUploadInfoTask = new GetUploadInfoTask(this, remoteFileFullPath, fileSet, fileInfo.Length);
             getUploadInfoTask.TaskCompletedCallback = (response, success) =>
             {
                 if (!response.Success)

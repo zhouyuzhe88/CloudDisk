@@ -1,6 +1,5 @@
 ﻿using Common.Util;
 using System;
-using System.Linq;
 
 namespace CloudDiskApp
 {
@@ -12,10 +11,22 @@ namespace CloudDiskApp
             Running,
             Completed
         }
+        
+        public string FileName
+        {
+            get
+            {
+                return RemoteFileFullPath.GetLastComponent();
+            }
+        }
 
-        public abstract string FileName { get; }
-
-        public abstract string DirectoryPath { get; }
+        public string DirectoryPath
+        {
+            get
+            {
+                return RemoteFileFullPath.GetDirectoryPath().GetLastComponent();
+            }
+        }
 
         public string RemoteFileFullPath { get; set; }
 
@@ -45,7 +56,7 @@ namespace CloudDiskApp
             LastSyncedTime = DateTime.Now;
         }
 
-        public void OnDataTransfferd(int size)
+        public virtual void OnDataTransfferd(int size)
         {
             TranffedLength += size;
             DateTime now = DateTime.Now;
@@ -60,7 +71,7 @@ namespace CloudDiskApp
             }
         }
 
-        protected void OnStart()
+        protected virtual void OnStart()
         {
             Console.WriteLine("running");
             TranffedLength = 0;
@@ -68,7 +79,7 @@ namespace CloudDiskApp
             UIController.Instance.RefreshTransferList();
         }
 
-        protected void OnCompleted(bool success)
+        protected virtual void OnCompleted(bool success)
         {
             Console.WriteLine("Completed");
             Status = TaskStatus.Completed;

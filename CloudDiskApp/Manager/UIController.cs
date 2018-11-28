@@ -5,7 +5,7 @@ using System.Windows;
 using Common.Util;
 using System.Collections.Generic;
 using Microsoft.Win32;
-using System.Threading;
+using System.IO;
 
 namespace CloudDiskApp
 {
@@ -90,7 +90,7 @@ namespace CloudDiskApp
 
                 if (saveFileDialog.ShowDialog() == true && !string.IsNullOrWhiteSpace(saveFileDialog.FileName))
                 {
-                    DownloadTask task = new DownloadTask();
+                    DownloadFileTask task = new DownloadFileTask();
                     task.LocalFileFullPath = saveFileDialog.FileName;
                     task.RemoteFileFullPath = Context.Instance.CurrentPath.AppendPath(task.LocalFileFullPath.GetLastComponent());
                     task.FileLength = cloudFileInfo.FileLength;
@@ -108,6 +108,31 @@ namespace CloudDiskApp
                 components.Remove(components.Last());
                 ListFiles(components.GetPath());
             }
+        }
+
+        public void OnAddFileButtonClick()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+
+            if (openFileDialog.ShowDialog() == true && openFileDialog.FileNames != null)
+            {
+                foreach(string fileName in openFileDialog.FileNames)
+                {
+                    UploadFileTask task = new UploadFileTask();
+                    task.LocalFileFullPath = fileName;
+                    task.RemoteFileFullPath = Context.Instance.CurrentPath.AppendPath(task.LocalFileFullPath.GetLastComponent());
+                    task.FileLength = new FileInfo(fileName).Length;
+                    TransferManager.Instance.AddTask(task);
+                }
+            }
+        }
+
+        public void OnAddFolderButtonClick()
+        {
+            System.Windows.Forms.FolderBrowserDialog dailog = new System.Windows.Forms.FolderBrowserDialog();
+            dailog.ShowDialog();
+            Console.WriteLine(dailog.SelectedPath);
         }
         #endregion
 

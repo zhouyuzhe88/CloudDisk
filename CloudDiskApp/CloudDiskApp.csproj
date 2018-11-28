@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,8 +62,9 @@
     </Compile>
     <Compile Include="Manager\ClientWrapper.cs" />
     <Compile Include="Manager\Context.cs" />
-    <Compile Include="Manager\Tranfer\DownloadTask.cs" />
+    <Compile Include="Manager\Tranfer\DownloadFileTask.cs" />
     <Compile Include="Manager\Tranfer\TransferManager.cs" />
+    <Compile Include="Manager\Tranfer\UploadFileTask.cs" />
     <Compile Include="Manager\UIController.cs" />
     <Compile Include="NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
@@ -162,9 +164,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resource\UpFolder.ico" />
+    <Resource Include="resource\AddFolder.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="resource\AddFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resource\UpFolder.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -36,9 +36,9 @@ namespace Manager.Files
             return result;
         }
 
-        internal string AddUploadFile(string userName, string fileSet, string filePath, string fileName, long fileLength)
+        internal string AddUploadFile(string userName, string fileSet, string remoteFileFullPath, long fileLength)
         {
-            string fullPath = BuildFilePath(userName, fileSet, filePath + "\\" + fileName);
+            string fullPath = BuildFilePath(userName, fileSet, remoteFileFullPath);
             new FileInfo(fullPath).Directory.Create();
             string fileId = Guid.NewGuid().ToString();
             CloudFileInfo fileInfo = new CloudFileInfo(fullPath, fileLength, false);

@@ -6,11 +6,8 @@ namespace Common.Protocol
     public class UploadRequest : Request
     {
         [DataMember]
-        public string FileName { get; set; }
-
-        [DataMember]
-        public string FilePath { get; set; }
-
+        public string RemoteFileFullPath { get; set; }
+        
         [DataMember]
         public long FileLength { get; set; }
 

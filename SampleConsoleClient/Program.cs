@@ -26,15 +26,15 @@ namespace SampleConsoleClient
             // DownloadFile("x.mkv", "\\", "D:\\x.mkv");
         }
 
-        private static void UploadFile(string fileName, string remotePath)
+        private static void UploadFile(string remoteFileFullPath, string localFileFullPath)
         {
             DateTime startTime = DateTime.Now, lastTime = DateTime.Now;
             int byteCnt = 0;
             long fileLength = 0;
             double timeCnt = 0;
-            client.UploadFile(fileName, remotePath, () =>
+            client.UploadFile(remoteFileFullPath, localFileFullPath, "", () =>
             {
-                Console.WriteLine("start upload {0}", fileName);
+                Console.WriteLine("start upload {0}", remoteFileFullPath);
             },
             (response, success) =>
             {
@@ -52,19 +52,18 @@ namespace SampleConsoleClient
             int byteCnt = 0;
             long fileLength = 0;
             double timeCnt = 0;
-            client.DownloadFile(remoteFileFullPath, localFileFullPath, "",
-                taskStartedCallback: () =>
-             {
-                 Console.WriteLine("start download {0}", localFileFullPath);
-             },
-                taskCompletedCallback: (r, s) =>
-                 {
-                     OnDataTransCompleted(startTime, fileLength);
-                 },
-                dataTransferredCallback: (length) =>
-                 {
-                     OnDataTrans(length, ref lastTime, ref byteCnt, ref fileLength, ref timeCnt);
-                 });
+            client.DownloadFile(remoteFileFullPath, localFileFullPath, "", () =>
+            {
+                Console.WriteLine("start download {0}", localFileFullPath);
+            },
+            (r, s) =>
+            {
+                OnDataTransCompleted(startTime, fileLength);
+            },
+            (length) =>
+            {
+                OnDataTrans(length, ref lastTime, ref byteCnt, ref fileLength, ref timeCnt);
+            });
         }
 
         private static void OnListCompleted(Response response, bool success)
