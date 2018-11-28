@@ -30,6 +30,13 @@ namespace CloudDiskApp
         {
             InitializeComponent();
             DataContextChanged += OnDataContextChanged;
+            Loaded += TransferFileRow_Loaded;
+        }
+
+        private void TransferFileRow_Loaded(object sender, RoutedEventArgs e)
+        {
+            double persetage = 1.0 * TransferFileRowData.TranffedLength / TransferFileRowData.FileLength;
+            ColorGrid.Width = FirstGrid.ActualWidth * persetage;
         }
 
         public static DependencyProperty MessageProperty = DependencyProperty.Register(
@@ -63,8 +70,7 @@ namespace CloudDiskApp
                     break;
                 case TransferTask.TaskStatus.Running:
                     double persetage = 1.0 * task.TranffedLength / task.FileLength;
-                    // ColorGrid.Width = FirstGrid.Width * persetage;
-                    StatusTextBlock.Text = string.Format("{0:0.00}% ({1})", 100.0 * persetage, task.Speed) ;
+                    StatusTextBlock.Text = string.Format("{0:0.00}% ({1})", 100.0 * persetage, task.Speed);
                     break;
                 case TransferTask.TaskStatus.Completed:
                     StatusTextBlock.Text = "Completed";

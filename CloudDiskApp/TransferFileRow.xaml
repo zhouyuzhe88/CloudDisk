@@ -8,39 +8,38 @@
              Name="TransferFileRowControl"
              MouseDoubleClick="TransferFileRowControl_MouseDoubleClick"
              d:DesignHeight="30" d:DesignWidth="600">
-    <Grid>
-        <Grid Background="AliceBlue">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="7*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="50"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Name="FirstGrid">
-                <Grid Background="Beige" HorizontalAlignment="Left" Name="ColorGrid"/>
-                <Image Name="FileIconImage" Margin="5, 5, 5, 5" HorizontalAlignment="Left" Width="20"/>
-                <TextBlock x:Name="FilePathTextBlock"
+
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Name="FirstGrid">
+            <Grid Background="Beige" HorizontalAlignment="Left" Name="ColorGrid"/>
+            <Image Name="FileIconImage" Margin="5, 5, 5, 5" HorizontalAlignment="Left" Width="20"/>
+            <TextBlock x:Name="FilePathTextBlock"
                            VerticalAlignment="Center"
                            Margin="30, 0, 0, 0"
                            Text="{Binding ElementName=TransferFileRowControl, Path=TransferFileRowData.FileName}"/>
-            </Grid>
-            
-            <TextBlock x:Name="FileLengthTextBlock"
+        </Grid>
+
+        <TextBlock x:Name="FileLengthTextBlock"
                        VerticalAlignment="Center"
                        Margin="5, 0, 0, 0"
                        Text="{Binding ElementName=TransferFileRowControl, Path=TransferFileRowData.FileLengthString}"
                        Grid.Column="1"/>
-            <TextBlock x:Name="FileDirPathTextBlock"
+        <TextBlock x:Name="FileDirPathTextBlock"
                        VerticalAlignment="Center"
                        Margin="5, 0, 0, 0"
                        Text="{Binding ElementName=TransferFileRowControl, Path=TransferFileRowData.DirectoryPath}"
                        Grid.Column="2"/>
-            <TextBlock x:Name="StatusTextBlock"
+        <TextBlock x:Name="StatusTextBlock"
                        VerticalAlignment="Center"
                        Margin="5, 0, 0, 0"
                        Grid.Column="3"/>
-            <Grid Background="Khaki" Grid.Column="4"></Grid>
-        </Grid>
+        <Grid Grid.Column="4"></Grid>
     </Grid>
 </UserControl>

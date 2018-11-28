@@ -63,6 +63,7 @@ namespace CloudDiskApp
         protected void OnStart()
         {
             Console.WriteLine("running");
+            TranffedLength = 0;
             Status = TaskStatus.Running;
             UIController.Instance.RefreshTransferList();
         }
