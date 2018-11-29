@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ActorGroup.cs" />
     <Compile Include="Files\FileManager.cs" />
+    <Compile Include="Handler\CreateFolderHandler.cs" />
     <Compile Include="Handler\DownloadHandler.cs" />
     <Compile Include="Handler\EchoHandler.cs" />
     <Compile Include="Handler\HandlerMapper.cs" />

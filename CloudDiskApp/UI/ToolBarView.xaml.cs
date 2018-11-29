@@ -10,6 +10,8 @@ namespace CloudDiskApp
         void OnAddFileButtonClick();
 
         void OnAddFolderButtonClick();
+
+        void OnCreateFolderButtonClick();
     }
 
     /// <summary>
@@ -35,5 +37,9 @@ namespace CloudDiskApp
             Manager.OnAddFileButtonClick();
         }
 
+        private void CreateFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.OnCreateFolderButtonClick();
+        }
     }
 }

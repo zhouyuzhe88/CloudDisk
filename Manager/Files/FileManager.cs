@@ -36,6 +36,26 @@ namespace Manager.Files
             return result;
         }
 
+        internal bool CreateFolder(string userName, string fileSet, string filePath)
+        {
+            string fullPath = BuildFilePath(userName, fileSet, filePath);
+            DirectoryInfo directoryInfo = new DirectoryInfo(fullPath);
+            Console.WriteLine("Create folder " + fullPath);
+            if (directoryInfo.Exists)
+            {
+                return false;
+            }
+            try
+            {
+                directoryInfo.Create();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
         internal string AddUploadFile(string userName, string fileSet, string remoteFileFullPath, long fileLength)
         {
             string fullPath = BuildFilePath(userName, fileSet, remoteFileFullPath);
@@ -81,6 +101,15 @@ namespace Manager.Files
             {
                 Files.Remove(fileId);
             }
+        }
+
+        internal void InitForder(string userName)
+        {
+            string userRootPath = Settings.GetStringValue("RootPath") + FileHelper.FileSeparator + userName;
+            string unclassifiedDirPath = userRootPath + FileHelper.FileSeparator + Settings.GetStringValue("UnclassifiedPath");
+            string classifiedDirPath = userRootPath + FileHelper.FileSeparator + Settings.GetStringValue("ClassifiedPath");
+            new DirectoryInfo(unclassifiedDirPath).Create();
+            new DirectoryInfo(classifiedDirPath).Create();
         }
 
         private string BuildFilePath(string userName, string setName, string filePath)

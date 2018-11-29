@@ -47,6 +47,19 @@ namespace CloudDiskApp
             }, fileSet);
         }
 
+        internal void CreateFolder(string fullPath, Action<bool> completedCallback, string fileSet = null)
+        {
+            if (fileSet == null)
+            {
+                fileSet = Context.Instance.CurrentFileSet;
+            }
+
+            Client.CreateFolder(fullPath, fileSet, (response, success) =>
+            {
+                completedCallback?.Invoke(success);
+            });
+        }
+
         internal void DownloadFile(
             string remoteFileFullPath,
             string localFileFullPath,

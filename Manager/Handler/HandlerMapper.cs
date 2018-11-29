@@ -13,12 +13,13 @@ namespace Manager.Handler
         {
             RequsetToHandler = new Dictionary<Type, Type>()
             {
-                { typeof(EchoRequest),      typeof(EchoHandler)},
-                { typeof(SigninRequest),    typeof(SigninHandler)},
-                { typeof(HeartbeatRequest), typeof(HeartbeatHandler)},
-                { typeof(UploadRequest),    typeof(UploadHandler)},
-                { typeof(DownloadRequest),  typeof(DownloadHandler)},
-                { typeof(ListRequest),      typeof(ListHandler)}
+                { typeof(EchoRequest),              typeof(EchoHandler)},
+                { typeof(SigninRequest),            typeof(SigninHandler)},
+                { typeof(HeartbeatRequest),         typeof(HeartbeatHandler)},
+                { typeof(UploadRequest),            typeof(UploadHandler)},
+                { typeof(DownloadRequest),          typeof(DownloadHandler)},
+                { typeof(ListRequest),              typeof(ListHandler)},
+                { typeof(CreateFolderRequest),      typeof(CreateFolderHandler)}
             };
         }
 

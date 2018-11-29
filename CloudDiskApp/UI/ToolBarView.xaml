@@ -11,7 +11,11 @@
                         Width="30" ToolTip="Up" Click="UpButton_Click">
             <Image Source=".\resource\UpFolder.png"/>
         </Button>
-        <Button Name="AddFileButton" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top"
+        <Button Name="CreateFolderButton" HorizontalAlignment="Left" Margin="40,5,0,0" VerticalAlignment="Top"
+                        Width="30" ToolTip="AddFile" Click="CreateFolderButton_Click">
+            <Image Source=".\resource\CreateFolder.png"/>
+        </Button>
+        <Button Name="AddFileButton" HorizontalAlignment="Left" Margin="85,5,0,0" VerticalAlignment="Top"
                         Width="30" ToolTip="AddFile" Click="AddFileButton_Click">
             <Image Source=".\resource\AddFile.png"/>
         </Button>

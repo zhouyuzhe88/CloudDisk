@@ -15,7 +15,7 @@ namespace Common.Util
 {
     public static class FileHelper
     {
-        private const string FileSeparator = "\\";
+        public const string FileSeparator = "\\";
 
         public const string FileRoot = "\\";
 

@@ -109,6 +109,22 @@ namespace CloudDiskApp
                 ListFiles(components.GetPath());
             }
         }
+        public void OnCreateFolderButtonClick()
+        {
+            string currentPath = Context.Instance.CurrentPath;
+            CreateFolderDialog dialog = new CreateFolderDialog(currentPath.GetLastComponent());
+            if(dialog.ShowDialog() == true)
+            {
+                string fullPath = currentPath.AppendPath(dialog.FolderName);
+                ClientWrapper.Instance.CreateFolder(fullPath, success =>
+                {
+                    if (success)
+                    {
+                        ListFiles(Context.Instance.CurrentPath);
+                    }
+                });
+            }
+        }
 
         public void OnAddFileButtonClick()
         {

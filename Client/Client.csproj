@@ -45,6 +45,7 @@
     <Compile Include="Client.User.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task\CreateFolderTask.cs" />
     <Compile Include="Task\DataTask.cs" />
     <Compile Include="Task\DownloadFileTask.cs" />
     <Compile Include="Task\GetUploadInfoTask.cs" />

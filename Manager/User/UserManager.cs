@@ -53,6 +53,7 @@ namespace Manager.User
                     {
                         user = new User(userName);
                         UserList.Add(user, 0);
+                        ActorGroup.Instance.FileManager.InitForder(userName);
                     }
                     UserList[user]++;
                 }

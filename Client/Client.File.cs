@@ -14,6 +14,13 @@ namespace Client
             listTask.Work();
         }
 
+        public void CreateFolder(string fullPath, string fileSet, Action<Response, bool> taskCompletedCallback)
+        {
+            CreateFolderTask createFolderTask = new CreateFolderTask(this, fullPath, fileSet);
+            createFolderTask.TaskCompletedCallback = taskCompletedCallback;
+            createFolderTask.Work();
+        }
+
         public void DownloadFile(
             string remoteFileFullPath,
             string localFileFullPath,

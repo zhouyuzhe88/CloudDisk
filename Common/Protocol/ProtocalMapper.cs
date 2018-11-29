@@ -58,33 +58,36 @@ namespace Common.Protocol
         {
             RequsetToResponse = new Dictionary<Type, Type>()
             {
-                { typeof(Request),          typeof(Response)},
-                { typeof(EchoRequest),      typeof(EchoResponse)},
-                { typeof(SigninRequest),    typeof(SigninResponse)},
-                { typeof(HeartbeatRequest), typeof(HeartbeatResponse)},
-                { typeof(UploadRequest),    typeof(UploadResponse)},
-                { typeof(DownloadRequest),  typeof(DownloadResponse)},
-                { typeof(ListRequest),      typeof(ListResponse)},
+                { typeof(Request),                  typeof(Response)},
+                { typeof(EchoRequest),              typeof(EchoResponse)},
+                { typeof(SigninRequest),            typeof(SigninResponse)},
+                { typeof(HeartbeatRequest),         typeof(HeartbeatResponse)},
+                { typeof(UploadRequest),            typeof(UploadResponse)},
+                { typeof(DownloadRequest),          typeof(DownloadResponse)},
+                { typeof(ListRequest),              typeof(ListResponse)},
+                { typeof(CreateFolderRequest),      typeof(CreateFolderResponse)},
             };
 
             NameToRequest = new Dictionary<string, Type>()
             {
-                { new EchoRequest().Name,       typeof(EchoRequest) },
-                { new SigninRequest().Name,     typeof(SigninRequest) },
-                { new HeartbeatRequest().Name,  typeof(HeartbeatRequest) },
-                { new UploadRequest().Name,     typeof(UploadRequest) },
-                { new DownloadRequest().Name,   typeof(DownloadRequest) },
-                { new ListRequest().Name,       typeof(ListRequest) },
+                { new EchoRequest().Name,               typeof(EchoRequest) },
+                { new SigninRequest().Name,             typeof(SigninRequest) },
+                { new HeartbeatRequest().Name,          typeof(HeartbeatRequest) },
+                { new UploadRequest().Name,             typeof(UploadRequest) },
+                { new DownloadRequest().Name,           typeof(DownloadRequest) },
+                { new ListRequest().Name,               typeof(ListRequest) },
+                { new CreateFolderRequest().Name,       typeof(CreateFolderRequest) },
             };
 
             NameToResponse = new Dictionary<string, Type>()
             {
-                { new EchoResponse().Name,       typeof(EchoResponse) },
-                { new SigninResponse().Name,     typeof(SigninResponse) },
-                { new HeartbeatResponse().Name,  typeof(HeartbeatResponse) },
-                { new UploadResponse().Name,     typeof(UploadResponse) },
-                { new DownloadResponse().Name,   typeof(DownloadResponse) },
-                { new ListResponse().Name,       typeof(ListResponse) },
+                { new EchoResponse().Name,              typeof(EchoResponse) },
+                { new SigninResponse().Name,            typeof(SigninResponse) },
+                { new HeartbeatResponse().Name,         typeof(HeartbeatResponse) },
+                { new UploadResponse().Name,            typeof(UploadResponse) },
+                { new DownloadResponse().Name,          typeof(DownloadResponse) },
+                { new ListResponse().Name,              typeof(ListResponse) },
+                { new CreateFolderResponse().Name,      typeof(CreateFolderResponse) },
             };
         }
     }
