@@ -29,7 +29,7 @@ namespace Manager.Server
                 long fileLen = fileInfo.FileLength;
                 using (FileStream fStream = File.OpenWrite(fileInfo.FilePath))
                 {
-                    nStream.TransferDataTo(fStream, fileLen);
+                    nStream.TransferDataTo(fStream, fileLen, CryptoType.Decrypt);
                 }
                 ActorGroup.Instance.FileManager.RemoveFile(fileId);
             }

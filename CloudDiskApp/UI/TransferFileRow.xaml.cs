@@ -25,7 +25,7 @@ namespace CloudDiskApp
         private void TransferFileRow_Loaded(object sender, RoutedEventArgs e)
         {
             double persetage = 1.0 * TransferFileRowData.TranffedLength / TransferFileRowData.FileLength;
-            ColorGrid.Width = FirstGrid.ActualWidth * persetage;
+            //ColorGrid.Width = FirstGrid.ActualWidth * persetage;
         }
 
         public static DependencyProperty MessageProperty = DependencyProperty.Register(

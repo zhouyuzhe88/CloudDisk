@@ -21,7 +21,7 @@ namespace Client.Task
         {
             using (FileStream fileStream = FileInfo.OpenRead())
             {
-                fileStream.TransferDataTo(networkStream, FileLength, DataTransferredCallback);
+                fileStream.TransferDataTo(networkStream, FileLength, CryptoType.Encrypt, DataTransferredCallback);
             }
         }
     }

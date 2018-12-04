@@ -43,8 +43,10 @@ namespace Client.Task
                     }
                     TaskCompletedCallback?.Invoke(null, true);
                 }
-                catch
+                catch(Exception e)
                 {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(e.StackTrace);
                     TaskCompletedCallback?.Invoke(null, false);
                 }
                 finally

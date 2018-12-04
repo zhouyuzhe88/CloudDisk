@@ -63,6 +63,7 @@
     <Compile Include="Protocol\SigninRequest.cs" />
     <Compile Include="Protocol\UploadRequest.cs" />
     <Compile Include="Protocol\UploadResponse.cs" />
+    <Compile Include="Util\CryptoHelper.cs" />
     <Compile Include="Util\FileHelper.cs" />
     <Compile Include="Util\HashHelper.cs" />
     <Compile Include="Util\JsonHelper.cs" />

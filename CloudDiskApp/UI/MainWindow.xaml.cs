@@ -1,4 +1,5 @@
 ﻿using Common.Protocol;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -59,6 +60,11 @@ namespace CloudDiskApp
         public void RefreshTransferList()
         {
             TransferFileWindow.Refresh();
+        }
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Client.Task;
 using Common.Util;
+using System;
 using System.Net.Sockets;
 
 namespace Client
@@ -28,7 +29,14 @@ namespace Client
             UploadPort = Settings.GetIntValue("UploadServerPort");
 
             CommandClient = new TcpClient();
-            CommandClient.Connect(ServerIp, CommandPort);
+            try
+            {
+                CommandClient.Connect(ServerIp, CommandPort);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public TcpClient GetTcpClient(TCPClientType type)
