@@ -7,7 +7,7 @@ namespace Manager.User
 {
     class UserManager
     {
-        private const int UpdateTimeSpan = 60;
+        private const int UpdateTimeSpan = 10 * 60 * 1000;
 
         private Dictionary<User, int> UserList { get; set; }
 
@@ -18,7 +18,7 @@ namespace Manager.User
             {
                 while (true)
                 {
-                    Thread.Sleep(UpdateTimeSpan * 1000);
+                    Thread.Sleep(UpdateTimeSpan);
                     UpdateAllUser();
                 }
 
