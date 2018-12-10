@@ -1,6 +1,7 @@
 ﻿using System;
 using Common.Protocol;
 using Common.Util;
+using Common.Logger;
 
 namespace SampleConsoleClient
 {
@@ -34,7 +35,7 @@ namespace SampleConsoleClient
             double timeCnt = 0;
             client.UploadFile(remoteFileFullPath, localFileFullPath, "", () =>
             {
-                Console.WriteLine("start upload {0}", remoteFileFullPath);
+                Log.I("start upload {0}", remoteFileFullPath);
             },
             (response, success) =>
             {
@@ -54,7 +55,7 @@ namespace SampleConsoleClient
             double timeCnt = 0;
             client.DownloadFile(remoteFileFullPath, localFileFullPath, "", () =>
             {
-                Console.WriteLine("start download {0}", localFileFullPath);
+                Log.I("start download {0}", localFileFullPath);
             },
             (r, s) =>
             {
@@ -76,16 +77,15 @@ namespace SampleConsoleClient
             ListResponse lRespons = response as ListResponse;
             foreach (CloudFileInfo info in lRespons.Files)
             {
-                Console.WriteLine("{0} {1} {2}", info.FilePath, info.FileLength, info.IsDirectory);
+                Log.I("{0} {1} {2}", info.FilePath, info.FileLength, info.IsDirectory);
             }
-            Console.WriteLine();
         }
 
         private static void OnDataTransCompleted(DateTime startTime, long fileLength)
         {
             DateTime endTime = DateTime.Now;
             TimeSpan total = endTime - startTime;
-            Console.WriteLine("Finish, use {0} s, average speed = {1}MB/s", total.TotalMilliseconds / 1000.0, GetSpeed(fileLength, total.TotalMilliseconds));
+            Log.I("Finish, use {0} s, average speed = {1}MB/s", total.TotalMilliseconds / 1000.0, GetSpeed(fileLength, total.TotalMilliseconds));
         }
 
         private static void OnDataTrans(int dataLength, ref DateTime lastTime, ref int byteCnt, ref long fileLength, ref double timeCnt)
@@ -98,7 +98,7 @@ namespace SampleConsoleClient
             timeCnt += dt.TotalMilliseconds;
             if (timeCnt > 1000)
             {
-                Console.WriteLine("{0} KB transfered speed = {1} MB/s", byteCnt / 1000.0, GetSpeed(byteCnt, timeCnt));
+                Log.I("{0} KB transfered speed = {1} MB/s", byteCnt / 1000.0, GetSpeed(byteCnt, timeCnt));
                 byteCnt = 0;
                 timeCnt = 0;
             }

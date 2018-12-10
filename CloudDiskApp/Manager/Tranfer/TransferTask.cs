@@ -1,4 +1,5 @@
-﻿using Common.Util;
+﻿using Common.Logger;
+using Common.Util;
 using System;
 
 namespace CloudDiskApp
@@ -66,14 +67,14 @@ namespace CloudDiskApp
                 Speed = ((long)((TranffedLength - LastSyncedLength) / time * 1000)).GetFileLengthString() + " / s";
                 LastSyncedLength = TranffedLength;
                 LastSyncedTime = now;
-                Console.WriteLine(Speed);
+                Log.V(Speed);
                 UIController.Instance.RefreshTransferList();
             }
         }
 
         protected virtual void OnStart()
         {
-            Console.WriteLine("running");
+            Log.I("TransferTask Running");
             TranffedLength = 0;
             Status = TaskStatus.Running;
             UIController.Instance.RefreshTransferList();
@@ -81,7 +82,7 @@ namespace CloudDiskApp
 
         protected virtual void OnCompleted(bool success)
         {
-            Console.WriteLine("Completed");
+            Log.I("TransferTask Completed");
             Status = TaskStatus.Completed;
             UIController.Instance.RefreshTransferList();
         }

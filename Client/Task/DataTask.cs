@@ -1,4 +1,5 @@
-﻿using Common.Util;
+﻿using Common.Logger;
+using Common.Util;
 using System;
 using System.IO;
 using System.Net.Sockets;
@@ -45,8 +46,7 @@ namespace Client.Task
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine(e.StackTrace);
+                    Log.E(e);
                     TaskCompletedCallback?.Invoke(null, false);
                 }
                 finally

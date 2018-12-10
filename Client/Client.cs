@@ -1,4 +1,5 @@
 ﻿using Client.Task;
+using Common.Logger;
 using Common.Util;
 using System;
 using System.Net.Sockets;
@@ -35,7 +36,7 @@ namespace Client
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Log.E(e);
             }
         }
 

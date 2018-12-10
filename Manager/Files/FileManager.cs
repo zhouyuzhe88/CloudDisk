@@ -3,6 +3,7 @@ using Common.Protocol;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Common.Logger;
 
 namespace Manager.Files
 {
@@ -40,7 +41,7 @@ namespace Manager.Files
         {
             string fullPath = BuildFilePath(userName, fileSet, filePath);
             DirectoryInfo directoryInfo = new DirectoryInfo(fullPath);
-            Console.WriteLine("Create folder " + fullPath);
+            Log.D("Create folder " + fullPath);
             if (directoryInfo.Exists)
             {
                 return false;

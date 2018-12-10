@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Logger;
+using System;
 
 namespace Manager.User
 {
@@ -22,7 +23,7 @@ namespace Manager.User
             {
                 PreviousToken = CurrentToken;
                 CurrentToken = Guid.NewGuid();
-                Console.WriteLine("Update Token {0}\t to \t{1}", PreviousToken, CurrentToken);
+                Log.V("Update Token {0}\t to \t{1}", PreviousToken, CurrentToken);
             }
         }
 

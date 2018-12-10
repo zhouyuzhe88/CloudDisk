@@ -1,4 +1,5 @@
 ﻿using Client.Task;
+using Common.Logger;
 using Common.Protocol;
 using System;
 
@@ -24,12 +25,12 @@ namespace Client
             {
                 SigninResponse sResponse = response as SigninResponse;
                 Token = sResponse.Token;
-                Console.WriteLine("Sign in success");
+                Log.I("Sign in success");
                 SendHeartbeat();
             }
             else
             {
-                Console.WriteLine("Sign in fail");
+                Log.E("Sign in fail");
             }
         }
 
@@ -44,12 +45,12 @@ namespace Client
         {
             if (success)
             {
-                Console.WriteLine("Heartbeat");
+                Log.V("Heartbeat");
                 HeartbeatResponse hResponse = response as HeartbeatResponse;
                 if (hResponse.Token != Token)
                 {
                     Token = hResponse.Token;
-                    Console.WriteLine("Update token {0}", Token);
+                    Log.I("Update token {0}", Token);
                 }
             }
         }

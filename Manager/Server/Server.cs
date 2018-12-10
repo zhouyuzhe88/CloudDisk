@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Logger;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -28,7 +29,7 @@ namespace Manager.Server
 
         private void ListenToSocket()
         {
-            Console.WriteLine("{0} started", ServerName);
+            Log.I("{0} started", ServerName);
             TcpListener listener = null;
             try
             {
@@ -41,7 +42,7 @@ namespace Manager.Server
                     try
                     {
                         remoteClient = listener.AcceptTcpClient();
-                        Console.WriteLine("New client connect to {0}", ServerName);
+                        Log.I("New client connect to {0}", ServerName);
                         Thread thread = new Thread(WorkingMethod);
                         thread.Start(remoteClient);
                     }
@@ -53,14 +54,13 @@ namespace Manager.Server
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                Log.E(e);
                 return;
             }
             finally
             {
                 listener.Stop();
-                Console.WriteLine("{0} ended", ServerName);
+                Log.I("{0} ended", ServerName);
             }
         }
     }

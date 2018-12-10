@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Logger;
+using System;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Common.Util
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Log.E(ex);
                 }
             }
             return result;
@@ -37,7 +38,7 @@ namespace Common.Util
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Log.E(ex);
                 }
             }
             return result;

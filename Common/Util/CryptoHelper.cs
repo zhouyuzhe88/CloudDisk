@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System;
+using Common.Logger;
 
 namespace Common.Util
 {
@@ -44,17 +45,17 @@ namespace Common.Util
 
         public static byte[] EncryptDES(this byte[] input)
         {
-            // Console.WriteLine("[{0}] Encrypt start: {1}", input.Length, input.ToHexString());
+            Log.V("[{0}] Encrypt start: {1}", input.Length, input.ToHexString());
             byte[] result = input.CryptoData(input.Length, CryptoType.Encrypt);
-            // Console.WriteLine("[{0}] Encrypt end:   {1}", result.Length, result.ToHexString());
+            Log.V("[{0}] Encrypt end:   {1}", result.Length, result.ToHexString());
             return result;
         }
 
         public static byte[] DecryptDES(this byte[] input)
         {
-            // Console.WriteLine("[{0}] Decrypt start: {1}", input.Length, input.ToHexString());
+            Log.V("[{0}] Decrypt start: {1}", input.Length, input.ToHexString());
             byte[] result = input.CryptoData(input.Length, CryptoType.Decrypt);
-            // Console.WriteLine("[{0}] Decrypt end:   {1}", result.Length, result.ToHexString());
+            Log.V("[{0}] Decrypt end:   {1}", result.Length, result.ToHexString());
             return result;
         }
         

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Logger;
+using System;
 using System.IO;
 using System.Net;
 using System.Security.Cryptography;
@@ -63,8 +64,7 @@ namespace Common.Util
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
+                Log.E(e);
             }
             finally
             {

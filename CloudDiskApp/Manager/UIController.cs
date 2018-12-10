@@ -148,7 +148,6 @@ namespace CloudDiskApp
         {
             System.Windows.Forms.FolderBrowserDialog dailog = new System.Windows.Forms.FolderBrowserDialog();
             dailog.ShowDialog();
-            Console.WriteLine(dailog.SelectedPath);
         }
         #endregion
 

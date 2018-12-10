@@ -23,7 +23,7 @@ namespace Common.Logger
             Logger = new ConsoleLogger();
         }
 
-        public static string LogLevelStr(LogLevel logLevel)
+        internal static string LogLevelStr(LogLevel logLevel)
         {
             switch(logLevel)
             {
@@ -74,6 +74,11 @@ namespace Common.Logger
         public static void E(string format, params object[] arg)
         {
             X(format, arg, LogLevel.Error);
+        }
+
+        public static void E(Exception e)
+        {
+            E(e.Message + "\n" + e.StackTrace);
         }
 
         private static void X(string format, object[] arg, LogLevel logLevel)

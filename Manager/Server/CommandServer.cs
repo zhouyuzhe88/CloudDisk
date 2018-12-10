@@ -1,4 +1,5 @@
-﻿using Common.Protocol;
+﻿using Common.Logger;
+using Common.Protocol;
 using Common.Util;
 using Manager.Handler;
 using System;
@@ -39,8 +40,7 @@ namespace Manager.Server
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
-                    Console.WriteLine(e.StackTrace);
+                    Log.E(e);
                     return;
                 }
             }
