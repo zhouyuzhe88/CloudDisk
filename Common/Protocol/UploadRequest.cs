@@ -21,5 +21,15 @@ namespace Common.Protocol
                 return "upload";
             }
         }
+
+        protected override string Description
+        {
+            get
+            {
+                return string.Format("path = {0}", RemoteFileFullPath) +
+                    (string.IsNullOrWhiteSpace(FileSet) ? "" : string.Format(" set = {1}", FileSet)) +
+                    string.Format(" length = {0}", FileLength);
+            }
+        }
     }
 }

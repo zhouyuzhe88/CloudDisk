@@ -17,5 +17,14 @@ namespace Common.Protocol
                 return "download";
             }
         }
+
+        protected override string Description
+        {
+            get
+            {
+                return string.Format("path = {0}", RemoteFileFullPath) + 
+                    (string.IsNullOrWhiteSpace(FileSet) ? "" : string.Format(" set = {1}", FileSet));
+            }
+        }
     }
 }

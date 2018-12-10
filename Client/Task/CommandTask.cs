@@ -57,6 +57,9 @@ namespace Client.Task
             Request.UserName = TaskDelegate.UserName;
             Request.Token = TaskDelegate.Token;
             Request.SetDateTime();
+            Request.RequestId = Guid.NewGuid().ToString();
+
+            Log.I("Send: {0}", Request);
 
             string requestStr = Coder.EncodeRequest(Request);
             string responseStr;
@@ -68,6 +71,7 @@ namespace Client.Task
                 responseStr = client.GetStream().ReadString();
             }
             Response response = Coder.DecodeResponse(responseStr);
+            Log.I("Receive: {0}", response);
             TaskCompletedCallback?.Invoke(response, response.Success);
         }
     }

@@ -17,5 +17,12 @@ namespace Common.Protocol
                 return "download";
             }
         }
+        protected override string Description
+        {
+            get
+            {
+                return base.Description + string.Format(" length = {0}", FileLength);
+            }
+        }
     }
 }

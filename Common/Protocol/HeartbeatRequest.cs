@@ -12,5 +12,13 @@ namespace Common.Protocol
                 return "heartbeat";
             }
         }
+
+        protected override string Description
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
     }
 }

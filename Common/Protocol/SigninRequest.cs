@@ -15,5 +15,13 @@ namespace Common.Protocol
                 return "signin";
             }
         }
+        
+        protected override string Description
+        {
+            get
+            {
+                return string.Format("user = {0}", UserName);
+            }
+        }
     }
 }

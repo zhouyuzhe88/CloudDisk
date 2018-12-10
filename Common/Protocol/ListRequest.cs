@@ -18,5 +18,14 @@ namespace Common.Protocol
 
         [DataMember]
         public string FileSet { get; set; }
+
+        protected override string Description
+        {
+            get
+            {
+                return string.Format("path = {0}", RemotePath) +
+                    (string.IsNullOrWhiteSpace(FileSet) ? "" : string.Format(" set = {1}", FileSet));
+            }
+        }
     }
 }

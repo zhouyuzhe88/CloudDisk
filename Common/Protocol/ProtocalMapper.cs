@@ -31,6 +31,7 @@ namespace Common.Protocol
                 return null;
             }
             Response response = Activator.CreateInstance(responseType) as Response;
+            response.RequestId = request.RequestId;
             response.SetDateTime();
             response.Success = success;
             return response;

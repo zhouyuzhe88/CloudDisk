@@ -3,20 +3,17 @@
 namespace Common.Protocol
 {
     [DataContract]
-    public abstract class Response
+    public abstract class Response : Protocol
     {
-        public abstract string Name { get; }
-
-        [DataMember]
-        public string DateTime { get; set; }
-
         [DataMember]
         public bool Success { get; set; }
 
-
-        public void SetDateTime()
+        protected override string Description
         {
-            this.DateTime = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            get
+            {
+                return string.Format("success = {0}", Success);
+            }
         }
     }
 }

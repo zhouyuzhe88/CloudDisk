@@ -30,8 +30,9 @@ namespace Manager.Server
                     string data = stream.ReadString();
                     Request request = Coder.DecodeRequest(data);
 
+                    Log.I("Receive: {0}", request);
                     Response response = request.BuildHandler().Handle(request);
-
+                    Log.I("Send: {0}", response);
                     if (response != null)
                     {
                         string ret = Coder.EncodeResponse(response);

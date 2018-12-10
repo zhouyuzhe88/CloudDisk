@@ -59,6 +59,7 @@
     <Compile Include="Protocol\ListRequest.cs" />
     <Compile Include="Protocol\ListResponse.cs" />
     <Compile Include="Protocol\ProtocalMapper.cs" />
+    <Compile Include="Protocol\Protocol.cs" />
     <Compile Include="Protocol\SigninResponse.cs" />
     <Compile Include="Protocol\EchoResponse.cs" />
     <Compile Include="Protocol\EchoRequest.cs" />

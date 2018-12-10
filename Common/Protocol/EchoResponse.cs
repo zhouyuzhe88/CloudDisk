@@ -15,5 +15,13 @@ namespace Common.Protocol
                 return "echo";
             }
         }
+
+        protected override string Description
+        {
+            get
+            {
+                return base.Description + string.Format(" content = {0}", Content);
+            }
+        }
     }
 }

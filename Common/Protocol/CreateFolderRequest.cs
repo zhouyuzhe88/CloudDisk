@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Common.Protocol
 {
@@ -15,6 +16,15 @@ namespace Common.Protocol
             get
             {
                 return "createFolder";
+            }
+        }
+
+        protected override string Description
+        {
+            get
+            {
+                return string.Format("path = {0}", FullPath) + 
+                    (string.IsNullOrWhiteSpace(FileSet) ? "" : string.Format(" set = {1}", FileSet));
             }
         }
     }
