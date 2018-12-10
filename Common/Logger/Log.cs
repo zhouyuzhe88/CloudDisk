@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Util;
+using System;
 
 namespace Common.Logger
 {
@@ -19,7 +20,7 @@ namespace Common.Logger
 
         static Log()
         {
-            DisplayLogLevel = 4;
+            DisplayLogLevel = Settings.GetIntValue("DisplayLogLevel");
             Logger = new ConsoleLogger();
         }
 

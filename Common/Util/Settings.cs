@@ -10,9 +10,14 @@ namespace Common.Util
             return ConfigurationManager.AppSettings[key];
         }
 
-        public static int GetIntValue(string key)
+        public static int GetIntValue(string key, int defaultValue = 0)
         {
-            return Convert.ToInt32(GetStringValue(key));
+            string value = GetStringValue(key);
+            if (value == null)
+            {
+                return defaultValue;
+            }
+            return Convert.ToInt32(value);
         }
 
         public static void Set(string key, string value)
